@@ -12,7 +12,6 @@
             'error',
             2
         ],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "globals": {
     "fetch": false,

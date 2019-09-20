@@ -18,14 +18,14 @@ const app = new Koa();
 app.use(cors());
 
 const fetchWeather = async () => {
-  console.log('got request, now going to endpoint');
-  console.log('mapURI:', mapURI);
-  console.log('targetCity:', targetCity);
-  console.log('appid:', appId);
+  // console.log('got request, now going to endpoint');
+  // console.log('mapURI:', mapURI);
+  // console.log('targetCity:', targetCity);
+  // console.log('appid:', appId);
 
   const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${appId}`;
   const response = await fetch(endpoint);
-  console.log('got the data! now response', response);
+  console.log('got the data! now response', response.status);
   return response ? response.json() : {};
 };
 

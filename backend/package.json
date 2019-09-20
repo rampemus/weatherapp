@@ -10,13 +10,13 @@
     "lint": "eslint src/*.js"
   },
   "dependencies": {
-    "debug": "^2.6.3",
+    "debug": "^4.1.1",
     "dotenv": "^8.1.0",
     "kcors": "^2.2.1",
     "koa": "^2.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "^7.2.0",
-    "node-fetch": "^1.6.3"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
