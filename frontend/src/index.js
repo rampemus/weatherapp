@@ -14,14 +14,14 @@ const Weather = () => {
     getWeatherFromApi()
       .then((weather) => {
         if (weather.icon) {
-          setIcon(weather.icon.slice(0, -1))
+          setIcon(weather.icon.slice(0, -1));
         }
       });
   }, []);
 
   return (
     <div className="icon">
-      {icon && <img src={`/img/${icon}.svg`} alt="" /> }
+      {icon && <img src={`/img/${icon}.svg`} alt="" width="100" height="100" /> }
     </div>
   );
 };
