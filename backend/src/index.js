@@ -26,6 +26,11 @@ const fetchWeather = async () => {
   const response = await fetch(endpoint);
   return response ? response.json() : {};
 };
+const fetchForecast = async () => {
+  const endpoint = `${mapURI}/forecast?q=${targetCity}&appid=${appId}`;
+  const response = await fetch(endpoint);
+  return response ? response.json() : {};
+};
 
 router.get('/api/weather', async context => {
   const id = parseInt(context.request.query.id);
@@ -67,20 +72,21 @@ router.get('/api/forecast', async context => {
 
     // TODO: where is the data actually?
     console.log('router, forecast', oldForecast.data);
-    context.body = oldForecast.data.weather ? oldForecast.data.weather[0] : {};
+    context.body = oldForecast.data.list ? oldForecast.data : {};
   } else {
     console.log('Query id is new');
 
-    const weatherData = await fetchWeather(); // TODO: use id
+    const weatherData = await fetchForecast(); // TODO: use id
     previousRequests.unshift({
       id: weatherData.id,
-      type: 'weather',
+      type: 'forecast',
       data: weatherData,
       timestamp: new Date(),
     });
 
+    console.log('api/forecast weatherData', weatherData);
     context.type = 'application/json; charset=utf-8';
-    context.body = weatherData.weather ? weatherData : {};
+    context.body = weatherData.list ? weatherData : {};
   }
 });
 
