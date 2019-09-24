@@ -57,7 +57,7 @@ const Forecast = () => {
             <tr>
               {forecast.slice(0, lenghtOfForecast).map((weather) => {
                 const temperature = unitHelper.kelvinToCelsius(weather.main.temp, 0); // °C
-                const temperatureWithUnit = temperature > 0 ? `+${temperature}°C` : `${temperature}°C`;
+                const temperatureWithUnit = temperature > 0 ? `${temperature}°C` : `${temperature}°C`;
                 return <td key={`temp${weather.dt}`}>{temperatureWithUnit}</td>;
               })}
             </tr>

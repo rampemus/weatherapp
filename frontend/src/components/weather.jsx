@@ -8,7 +8,7 @@ const getWeatherFromApi = (id) => fetch(`${baseURL}/weather?id=${id}`)
   .catch((error) => console.error(error.message));
 
 const Weather = () => {
-  const city = 'Helsinki'
+  const city = 'Helsinki';
 
   const [icon, setIcon] = useState('');
   const [temperature, setTemperature] = useState('no data');
@@ -29,8 +29,8 @@ const Weather = () => {
   return (
     <div className="icon">
       {icon && <img src={`/img/${icon}.svg`} alt="" width="150" height="150" />}
-      {`Temperature now in ${city} is ${unitHelper.kelvinToCelsius(temperature)}`}
-      {`°C and windspeed is ${windSpeed} m/s`}
+      {`Temperature now in ${city} is ${unitHelper.kelvinToCelsius(temperature)}°C `}
+      {`and windspeed ${windSpeed} m/s`}
     </div>
   );
 };
