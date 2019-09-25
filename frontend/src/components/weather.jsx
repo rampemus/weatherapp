@@ -3,7 +3,8 @@ import unitHelper from '../utils/unitHelper';
 
 const baseURL = 'http://localhost:9000/api';
 
-const getWeatherFromApi = (id) => fetch(`${baseURL}/weather?id=${id}`)
+// TODO: refactor with axios
+const getWeatherFromApi = (id) => fetch(`${baseURL}/weather?id=${id}`, { method: 'post' })
   .then((weather) => weather.json())
   .catch((error) => console.error(error.message));
 

@@ -6,7 +6,7 @@ const baseURL = 'http://localhost:9000/api';
 
 const lenghtOfForecast = 12; // *4hours (max 40)
 
-const getForecastFromApi = (id) => fetch(`${baseURL}/forecast?id=${id}`)
+const getForecastFromApi = (id) => fetch(`${baseURL}/forecast?id=${id}`, { method: 'post' })
   .then((forecast) => forecast.json())
   .catch((error) => console.error(error.message));
 
