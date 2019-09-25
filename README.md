@@ -13,7 +13,7 @@ Make sure that you have environment values set up. You can do this by creating .
 
 Run frontend and backend the same time and make sure you have default ports 3000 and 9000 available. Frontend runs using:
 
-`npm start´
+`npm start
 
 and backend runs using command:
 
