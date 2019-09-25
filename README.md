@@ -2,7 +2,7 @@
 
 ## Installation
 
-Since there is no docker setup running in dev mode needs some installation. For both frontend and backend run:
+Since there is no docker setup in my solution, running in dev mode needs some installation... For both frontend and backend run:
 
 `npm install`
 
