@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import unitHelper from '../utils/unitHelper';
 import weekDayHelper from '../utils/weekDayHelper';
 
@@ -6,21 +7,21 @@ const baseURL = 'http://localhost:9000/api';
 
 const lenghtOfForecast = 12; // *4hours (max 40)
 
-const getForecastFromApi = (id) => fetch(`${baseURL}/forecast?id=${id}`, { method: 'post' })
-  .then((forecast) => forecast.json())
+const getForecastFromApi = (id, location) => axios.post(`${baseURL}/forecast?id=${id}`, location)
+  .then((forecast) => forecast.data)
   .catch((error) => console.error(error.message));
 
-const Forecast = () => {
+const Forecast = (props) => {
   const [forecast, setForecast] = useState([]);
 
   useEffect(() => {
-    getForecastFromApi(658225)
+    getForecastFromApi(658225, props.location)
       .then((data) => {
         if (data.list.length > 0) {
           setForecast(data.list);
         }
       });
-  }, []);
+  }, [props.location]);
 
   if (forecast[0]) {
     return (

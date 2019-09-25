@@ -12,8 +12,8 @@ const removeOldData = () => {
 const appId = process.env.APPID;
 const mapURI = process.env.MAP_ENDPOINT || 'http://api.openweathermap.org/data/2.5';
 const targetCity = process.env.TARGET_CITY || 'Helsinki,fi';
-const fetchForecast = async () => {
-  const endpoint = `${mapURI}/forecast?q=${targetCity}&appid=${appId}`;
+const fetchForecast = async (id) => {
+  const endpoint = `${mapURI}/forecast?id=${id}&appid=${appId}`;
   const response = await fetch(endpoint);
   return response ? response.json() : {};
 };
@@ -28,7 +28,7 @@ forecastRouter.post('/api/forecast', async ctx => {
   const oldForecast = previousRequests.find((request) => request.id === id && request.type === 'forecast');
 
   if (oldForecast) {
-    console.log('same query was done within 10 minutes, sending duplicate');
+    // console.log('same query was done within 10 minutes, sending duplicate');
     ctx.type = 'application/json; charset=utf-8';
 
     // TODO: where is the data actually?
@@ -37,7 +37,7 @@ forecastRouter.post('/api/forecast', async ctx => {
   } else {
     console.log('Query id is new');
 
-    const weatherData = await fetchForecast(); // TODO: use id
+    const weatherData = await fetchForecast(id); // TODO: use id
     previousRequests.unshift({
       id: weatherData.id,
       type: 'forecast',

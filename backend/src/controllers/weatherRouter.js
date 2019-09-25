@@ -12,8 +12,8 @@ const removeOldData = () => {
 const appId = process.env.APPID;
 const mapURI = process.env.MAP_ENDPOINT || 'http://api.openweathermap.org/data/2.5';
 const targetCity = process.env.TARGET_CITY || 'Helsinki,fi';
-const fetchWeather = async () => {
-  const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${appId}`;
+const fetchWeather = async (id) => {
+  const endpoint = `${mapURI}/weather?id=${id}&appid=${appId}`;
   const response = await fetch(endpoint);
   return response ? response.json() : {};
 };
@@ -34,7 +34,7 @@ weatherRouter.post('/api/weather', async ctx => {
   } else {
     console.log('Query id is new');
 
-    const weatherData = await fetchWeather(); // TODO: use id
+    const weatherData = await fetchWeather(id); // TODO: use id
     previousRequests.unshift({
       id: weatherData.id,
       type: 'weather',

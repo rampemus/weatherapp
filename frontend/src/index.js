@@ -9,13 +9,10 @@ const App = () => {
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        // setLocation({ lat: position.coords.latitude, lon: position.coords.longitude });
         setLocation({ lat: position.coords.latitude, lon: position.coords.longitude });
-        console.log(position);
       });
     } else {
-      console.log('using default location: Helsinki');
-      setLocation({ lon: 24.93417, lat: 60.17556 });
+      setLocation({ lon: 24.93417, lat: 60.17556 }); // Helsinki
     }
   }, []);
 
@@ -28,5 +25,3 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// serviceWorker.unregister();
