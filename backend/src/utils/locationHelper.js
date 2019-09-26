@@ -12,6 +12,9 @@ const areaArray = (location, delta) => {
 
   const filtered = cities.slice(eastBoundary, westBoundary).filter((city) => city.coord.lat < northBoundary && city.coord.lat > southBoundary);
 
+  if (filtered.length === 0) {
+    return areaArray(location, searchArea * 2);
+  }
   return filtered;
 };
 
