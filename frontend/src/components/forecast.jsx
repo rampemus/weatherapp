@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { getForecastFromApi } from '../services/weatherService';
 import unitHelper from '../utils/unitHelper';
 import weekDayHelper from '../utils/weekDayHelper';
 
-const baseURL = 'http://localhost:9000/api';
-
-const lenghtOfForecast = 12; // *4hours (max 40)
-
-const getForecastFromApi = (id, location) => axios.post(`${baseURL}/forecast?id=${id}`, location)
-  .then((forecast) => forecast.data)
-  .catch((error) => console.error(error.message));
+const lenghtOfForecast = 12; // *3hours (max 40)
 
 const Forecast = ({ location }) => {
   const [forecast, setForecast] = useState([]);

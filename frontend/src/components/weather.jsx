@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { getWeatherFromApi } from '../services/weatherService';
 import unitHelper from '../utils/unitHelper';
-
-const baseURL = 'http://localhost:9000/api';
 
 // Kauniainen { lat: 60.1841623, lon: 24.7415829 }
 // Joensuu { lon: 29.75, lat: 62.583328 }
-
-const getWeatherFromApi = (id, location) => axios.post(`${baseURL}/weather?id=${id}`, location)
-  .then((weather) => weather.data)
-  .catch((error) => console.error(error.message));
 
 const Weather = ({ location }) => {
   const [city, setCity] = useState('Helsinki');
