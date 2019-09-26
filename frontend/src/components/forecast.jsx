@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import unitHelper from '../utils/unitHelper';
 import weekDayHelper from '../utils/weekDayHelper';
@@ -11,17 +12,17 @@ const getForecastFromApi = (id, location) => axios.post(`${baseURL}/forecast?id=
   .then((forecast) => forecast.data)
   .catch((error) => console.error(error.message));
 
-const Forecast = (props) => {
+const Forecast = ({ location }) => {
   const [forecast, setForecast] = useState([]);
 
   useEffect(() => {
-    getForecastFromApi(658225, props.location)
+    getForecastFromApi(658225, location)
       .then((data) => {
         if (data.list.length > 0) {
           setForecast(data.list);
         }
       });
-  }, [props.location]);
+  }, [location]);
 
   if (forecast[0]) {
     return (
@@ -69,6 +70,21 @@ const Forecast = (props) => {
     );
   }
   return 'no data';
+};
+
+
+Forecast.propTypes = {
+  location: PropTypes.shape({
+    lat: PropTypes.number,
+    lon: PropTypes.number,
+  }),
+};
+
+Forecast.defaultProps = {
+  location: {
+    lon: 24.93417,
+    lat: 60.17556,
+  },
 };
 
 export default Forecast;
