@@ -19,11 +19,9 @@ const createRequestCache = () => {
     const previous = previousRequests.find((request) => request.url === url && request.id === id);
 
     if (previous) {
-      console.log('old');
       ctx.type = 'application/json; charset=utf-8';
       ctx.body = previous.body;
     } else {
-      console.log('new');
       await next();
 
       previousRequests.unshift({

@@ -7,8 +7,6 @@ const locate = async (ctx, next) => {
     ctx.request.query.id = locationHelper.nearestLocation(body).id;
   }
 
-  console.log('middleware working');
-
   await next();
 };
 
