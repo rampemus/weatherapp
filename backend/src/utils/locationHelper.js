@@ -6,15 +6,12 @@ const areaArray = (location, delta) => {
 
   const westBoundary = cities.findIndex((city) => city.coord.lon < location.lon - searchArea);
   const eastBoundary = cities.length - cities.slice().reverse().findIndex((city) => city.coord.lon > location.lon + searchArea);
-  // console.log('west:' + westBoundary + ',east:' + eastBoundary + ' and difference: ' + (westBoundary - eastBoundary));
 
   const northBoundary = location.lat + searchArea;
   const southBoundary = location.lat - searchArea;
 
   const filtered = cities.slice(eastBoundary, westBoundary).filter((city) => city.coord.lat < northBoundary && city.coord.lat > southBoundary);
-  // console.log('filtered length: ' + filtered.length);
 
-  // console.log(filtered);
   return filtered;
 };
 

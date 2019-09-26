@@ -16,25 +16,19 @@ app.use(koaBody());
 app.use(async (ctx, next) => {
   const body = ctx.request.body;
 
-  console.log('before: ', ctx.request.url, ctx.request.query.id);
-
   if (body.lat && body.lon) {
     ctx.request.query.id = locationHelper.nearestLocation(body).id;
-    console.log('changed the location!');
   }
   await next();
 });
 
 const fetchRefreshInterval = process.env.REFRESH_INTERVAL || 10; // minutes
 let previousRequests = [];
-
 const removeOldRequests = () => {
   const oldestValidTime = new Date(new Date() - 1000 * 60 * fetchRefreshInterval);
   const firstOld = previousRequests.map(fetch => fetch.timestamp).findIndex(time => new Date(time) < oldestValidTime);
   if (firstOld !== -1) {
-    console.log('berofe', previousRequests.length);
     previousRequests = previousRequests.slice(0, firstOld);
-    console.log('after', previousRequests.length);
   }
 };
 
@@ -42,10 +36,7 @@ app.use(async (ctx, next) => {
   const url = ctx.request.url;
   const id = ctx.request.query.id;
 
-  console.log('after: ', ctx.request.url, ctx.request.query.id);
-
   removeOldRequests();
-
   const previous = previousRequests.find((request) => request.url === url && request.id === id);
 
   if (previous) {
