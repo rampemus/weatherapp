@@ -1,4 +1,4 @@
-require('debug')('weathermap');
+// require('debug')('weathermap');
 require('dotenv').config();
 const koaBody = require('koa-body');
 

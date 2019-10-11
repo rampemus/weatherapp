@@ -9,8 +9,8 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always"],
     'indent': [
-            'error',
-            2
-        ],
+      'error',
+      2
+    ],
   }
 }
