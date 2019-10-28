@@ -26,7 +26,7 @@ const Forecast = ({ location }) => {
             <tr>
               {forecast.slice(0, lenghtOfForecast).map((weather, i) => {
                 const time = new Date(weather.dt * 1000);
-                const dayStart = time.getHours() === 0 || i === 0;
+                const dayStart = time.getHours() < 3 || i === 0;
                 return (dayStart
                   ? <td key={weather.dt}>{weekDayHelper.getShortWeekDayName(time)}</td>
                   : <td key={weather.dt} />);
