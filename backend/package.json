@@ -6,12 +6,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "DEBUG=weathermap ./node_modules/.bin/nodemon src/index.js",
+    "dev": "DEBUG=weathermap APPID=<SECRET> ./node_modules/.bin/nodemon src/index.js",
     "lint": "eslint src/*.js"
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "dotenv": "^8.1.0",
     "kcors": "^2.2.1",
     "koa": "^2.2.0",
     "koa-body": "^4.1.1",

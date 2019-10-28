@@ -6,10 +6,7 @@ Since there is no docker setup in my solution, running in dev mode needs some in
 
 `npm install`
 
-Make sure that you have environment values set up. You can do this by creating .env -file to backend root folder. Needed environment parameters are:
-
-`APPID=...`
-`REFRESH_INTERVAL=10`
+Make sure that you have environment value set up in package.json by replacing <SECRET> with it in developer mode or set it up separately for production build.
 
 Run frontend and backend the same time and make sure you have default ports 3000 and 9000 available. Frontend runs using:
 

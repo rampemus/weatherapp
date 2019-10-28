@@ -1,5 +1,4 @@
 // require('debug')('weathermap');
-require('dotenv').config();
 const koaBody = require('koa-body');
 
 const Koa = require('koa');
@@ -25,4 +24,6 @@ app.use(forecastRouter.allowedMethods());
 
 app.listen(port);
 
-console.log(`App listening on port ${port}`);
+const appId = process.env.APPID;
+
+console.log(`App listening on port ${port} using api key ${appId}`);

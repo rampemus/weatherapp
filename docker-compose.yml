@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    frontend:
+        image: weatherapp-frontend
+        ports:
+            - 3000:3000
+        depends_on:
+            - backend
+    backend:
+        image: weatherapp-backend
+        environment:
+            - APPID=75d8f713fe573cf3fcf589023505f957
+        ports:
+            - 9000:9000
