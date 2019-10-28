@@ -31,7 +31,9 @@ then you can run the frontend:
 
 and open frontend: [http://localhost:3000](http://localhost:3000)
 
-## Exercises
+# Exercises
+
+Original exercise list can be found at https://github.com/eficode/weatherapp.
 
 Here is the list of exercises that are done in this git repository:
 
