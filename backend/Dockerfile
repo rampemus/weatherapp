@@ -1,4 +1,9 @@
-FROM node:10.16.3
+FROM node:alpine
+
+RUN mkdir backend && chown node ./backend/
+
+USER node
+
 WORKDIR /backend
 COPY . .
 RUN npm install
