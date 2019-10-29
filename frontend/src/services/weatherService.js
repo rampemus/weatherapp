@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:9000/api';
+const baseURL = 'process.env.BACKEND_API' || 'http://localhost:9000/api';
 
 export const getWeatherFromApi = (id, location) => axios.post(`${baseURL}/weather?id=${id}`, location)
   .then((weather) => weather.data);
