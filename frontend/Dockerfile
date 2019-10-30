@@ -4,8 +4,9 @@ RUN mkdir frontend && chown node ./frontend/
 
 WORKDIR /frontend
 
-COPY . .
+COPY package.json .
 RUN npm install
+COPY . .
 RUN npm config set unsafe-perm=true
 RUN npm run build --prod
 
