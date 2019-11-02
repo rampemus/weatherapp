@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+    frontend:
+        image: rampemus/weatherapp-frontend
+        ports:
+            - 80:3000
+        depends_on:
+            - backend
+    backend:
+        image: rampemus/weatherapp-backend
+        environment:
+            - APPID=75d8f713fe573cf3fcf589023505f957
+        ports:
+            - 9000:9000
