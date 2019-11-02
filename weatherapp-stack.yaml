@@ -7,6 +7,8 @@ services:
             - 80:3000
         depends_on:
             - backend
+        deploy:
+            - replicas: 3
     backend:
         image: rampemus/weatherapp-backend
         environment:
