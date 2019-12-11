@@ -16,7 +16,7 @@ and backend runs using command:
 
 `npm run dev`
 
-## Running at localhost as docker containers
+## Running locally with docker containers
 
 Make sure you have docker installed and run:
 
