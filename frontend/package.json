@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_BACKEND_API=http://localhost:9000/ react-scripts start",
     "build": "REACT_APP_BACKEND_API=https://rampemus-weatherapp-backend.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.4.0",
-    "eslint-config-airbnb": "^18.0.1"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0"
   }
 }
